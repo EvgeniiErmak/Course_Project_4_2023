@@ -4,10 +4,12 @@ import json
 import os
 from abc import ABC, abstractmethod
 
+
 class APIManager(ABC):
     @abstractmethod
     def get_vacancies(self):
         pass
+
 
 class Vacancy:
     def __init__(self, name, page, top_n):
@@ -17,6 +19,7 @@ class Vacancy:
 
     def __repr__(self):
         return f'{self.name}'
+
 
 class HH(Vacancy, APIManager):
     def __init__(self, name, page, top_n):
@@ -47,6 +50,7 @@ class HH(Vacancy, APIManager):
             }
             vacancies.append(vacancy_info)
         return vacancies
+
 
 class SuperJob(Vacancy, APIManager):
     def __init__(self, name, page, top_n):
@@ -80,6 +84,7 @@ class SuperJob(Vacancy, APIManager):
             }
             vacancies.append(super_job)
         return vacancies
+
 
 def job_vacancy():
     name = input('Введите вакансию: ')
